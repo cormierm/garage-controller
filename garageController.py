@@ -22,7 +22,7 @@ def show():
     camera.start_preview()
     time.sleep(2)
     camera.capture(image)
-    return send_file(image)
+    return send_file(image, mimetype='image/jpg')
 
 @app.route("/toggle-door")
 def toggleDoor():
