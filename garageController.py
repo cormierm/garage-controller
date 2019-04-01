@@ -11,18 +11,18 @@ channels = [door1]
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(channels, GPIO.OUT)
 
+camera = PiCamera()
+camera.start_preview()
+imageFile = open('image.jpg', 'wb')
+
 @app.route("/")
 def home():
     return "Garage Door Application"
 
 @app.route("/show")
 def show():
-    image = open('image.jpg', 'wb')
-    camera = PiCamera()
-    camera.start_preview()
-    time.sleep(2)
-    camera.capture(image)
-    return send_file(image, mimetype='image/jpg')
+    camera.capture(imageFile)
+    return send_file(imageFile, mimetype='image/jpg')
 
 @app.route("/toggle-door")
 def toggleDoor():
