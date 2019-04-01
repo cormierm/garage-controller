@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, render_template
 from picamera import PiCamera
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ imageFilename = 'image.jpg'
 
 @app.route("/")
 def home():
-    return "Garage Door Application"
+    return render_template('index.html')
 
 @app.route("/show")
 def show():
