@@ -17,7 +17,7 @@ imageFilename = 'image.jpg'
 
 @app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template('index.html',timestamp=str(int(time.time())))
 
 @app.route("/show")
 def show():

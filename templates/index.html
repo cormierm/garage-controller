@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Garage Door Controller</h1>
     <div class="text-center">
-        <img src="{{ url_for('show') }}" class="rounded" alt="Garage image"/>
+        <h1>Garage Door Controller</h1>
+        <img src="{{ '{}?{}'.format(url_for('show'), timestamp) }}" class="rounded" alt="Garage image"/>
+        <a href="/toggle-door?channel=18" class="btn btn-primary">Toggle Door</a>
     </div>
-    <a href="/toggle-door?channel=18" class="btn btn-primary">Toggle Door</a>
 </body>
 </html>
