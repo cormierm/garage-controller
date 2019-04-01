@@ -4,6 +4,7 @@ from flask import Flask, flash, redirect, request, send_file, render_template, u
 from picamera import PiCamera
 
 app = Flask(__name__)
+app.secret_key = b'SET_TO_YOUR_SECRET_KEY'
 
 door1 = 18
 channels = [door1]
