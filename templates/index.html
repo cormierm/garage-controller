@@ -5,7 +5,7 @@
     <title>Garage Door Controller</title>
 </head>
 <body>
-    <img src="/show" alt="Garage image"/>
+    <img src="{{ url_for('show') }}" alt="Garage image"/>
     <a href="/toggle-door?channel=18">Toggle door</a>
 </body>
 </html>
