@@ -23,8 +23,8 @@ def toggleDoor():
 
     if channel in channels:
         triggerGPIO(channel)
-        return 'triggered ' + channel
-    return "failed"
+        return 'Toggled {}'.format(channel)
+    return "Invalid Channel"
 
 def triggerGPIO(gpioChannel):
     GPIO.output(gpioChannel, False)
