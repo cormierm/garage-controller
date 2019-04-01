@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from flask import Flask, request
+from flask import Flask, request, send_file
 from picamera import PiCamera
 
 app = Flask(__name__)
@@ -17,12 +17,12 @@ def home():
 
 @app.route("/show")
 def show():
-    my_file = open('my_image.jpg', 'wb')
+    image = open('image.jpg', 'wb')
     camera = PiCamera()
     camera.start_preview()
     time.sleep(2)
-    camera.capture(my_file)
-    return my_file
+    camera.capture(image)
+    return send_file(image)
 
 @app.route("/toggle-door")
 def toggleDoor():
