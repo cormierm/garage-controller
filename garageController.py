@@ -16,8 +16,12 @@ def home():
 
 @app.route("/toggle-door")
 def toggleDoor():
-    channel = request.args.get('channel')
-    if int(channel) in channels:
+    try:
+        channel = int(request.args.get('channel'))
+    except:
+        return 'Channel must be an integer'
+
+    if channel in channels:
         triggerGPIO(channel)
         return 'triggered ' + channel
     return "failed"
