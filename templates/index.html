@@ -8,7 +8,16 @@
 <body>
     <div class="text-center">
         <h1>Garage Door Controller</h1>
+    </div>
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-primary" role="alert">
+          {{ message }}
+        </div>
+    {% endfor %}
+    <div class="text-center">
         <img src="{{ '{}?{}'.format(url_for('show'), timestamp) }}" class="rounded" alt="Garage image"/>
+    </div>
+    <div class="text-center">
         <a href="/toggle-door?channel=18" class="btn btn-primary">Toggle Door</a>
     </div>
 </body>

@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from flask import Flask, request, send_file, render_template
+from flask import Flask, flash, redirect, request, send_file, render_template, url_for
 from picamera import PiCamera
 
 app = Flask(__name__)
@@ -29,12 +29,15 @@ def toggleDoor():
     try:
         channel = int(request.args.get('channel'))
     except:
-        return 'Channel must be an integer'
+        flash('Channel must be an integer')
+        return redirect(url_for('home'))
 
     if channel in channels:
         triggerGPIO(channel)
-        return 'Toggled {}'.format(channel)
-    return "Invalid Channel"
+        flash('Toggled {}'.format(channel))
+        return redirect(url_for('home'))
+    flash('Invalid Channel')
+    return redirect(url_for('home'))
 
 def triggerGPIO(gpioChannel):
     GPIO.output(gpioChannel, False)
