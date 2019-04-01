@@ -13,7 +13,7 @@ GPIO.setup(channels, GPIO.OUT)
 
 camera = PiCamera()
 camera.start_preview()
-imageFile = open('image.jpg', 'wb')
+imageFilename = 'image.jpg'
 
 @app.route("/")
 def home():
@@ -21,8 +21,8 @@ def home():
 
 @app.route("/show")
 def show():
-    camera.capture(imageFile)
-    return send_file(imageFile, mimetype='image/jpg')
+    camera.capture(imageFilename)
+    return send_file(imageFilename, mimetype='image/jpg')
 
 @app.route("/toggle-door")
 def toggleDoor():
